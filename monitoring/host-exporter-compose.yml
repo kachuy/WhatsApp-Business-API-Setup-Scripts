@@ -8,7 +8,8 @@ version: '3'
 # on each host, run docker-compose -f host-exporter-compose.yml up -d
 services:
   cadvisor:
-    image: google/cadvisor:v0.30.2
+    platform: linux/x86_64
+    image: gcr.io/cadvisor/cadvisor:v0.45.0
     restart: always
     ports:
       - 8080:8080
@@ -20,7 +21,7 @@ services:
       - /dev/disk/:/dev/disk:ro
     privileged: true
   node-exporter:
-    image: prom/node-exporter:v0.16.0
+    image: prom/node-exporter:v1.3.1
     restart: always
     ports:
       - 9100:9100
